@@ -15,6 +15,8 @@ namespace TrilhaNetAzureDesafio.Context
         }
 
         public DbSet<Funcionario> Funcionarios { get; set; }
-        public DbSet<FuncionarioLogT> FuncionarioLogsT { get; set; }
+        
+        // Log Tabela Local
+        // public DbSet<FuncionarioLogT> FuncionarioLogsT { get; set; }
     }
 }

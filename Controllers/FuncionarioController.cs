@@ -49,17 +49,17 @@ public class FuncionarioController : ControllerBase
 
         // Log Tabela Local
 
-        var funcionarioLog = new FuncionarioLogT(funcionario, TipoAcao.Inclusao);
-        _context.FuncionarioLogsT.Add(funcionarioLog);
-        _context.SaveChanges();
+        // var funcionarioLog = new FuncionarioLogT(funcionario, TipoAcao.Inclusao);
+        // _context.FuncionarioLogsT.Add(funcionarioLog);
+        // _context.SaveChanges();
 
         // Azure Table
 
-        // var tableClient = GetTableClient();
-        // var funcionarioLog = new FuncionarioLog(funcionario, TipoAcao.Inclusao, funcionario.Departamento, Guid.NewGuid().ToString());
+        var tableClient = GetTableClient();
+        var funcionarioLog = new FuncionarioLog(funcionario, TipoAcao.Inclusao, funcionario.Departamento, Guid.NewGuid().ToString());
 
-        // // TODO: Chamar o método UpsertEntity para salvar no Azure Table
-        // tableClient.UpsertEntity(funcionarioLog);
+        // TODO: Chamar o método UpsertEntity para salvar no Azure Table
+        tableClient.UpsertEntity(funcionarioLog);
 
 
         return CreatedAtAction(nameof(ObterPorId), new { id = funcionario.Id }, funcionario);
@@ -88,17 +88,17 @@ public class FuncionarioController : ControllerBase
 
         // Log Tabela Local
 
-        var funcionarioLog = new FuncionarioLogT(funcionarioBanco, TipoAcao.Atualizacao);
-        _context.FuncionarioLogsT.Add(funcionarioLog);
-        _context.SaveChanges();
+        // var funcionarioLog = new FuncionarioLogT(funcionarioBanco, TipoAcao.Atualizacao);
+        // _context.FuncionarioLogsT.Add(funcionarioLog);
+        // _context.SaveChanges();
         
         // Azure Table
 
-        // var tableClient = GetTableClient();
-        // var funcionarioLog = new FuncionarioLog(funcionarioBanco, TipoAcao.Atualizacao, funcionarioBanco.Departamento, Guid.NewGuid().ToString());
+        var tableClient = GetTableClient();
+        var funcionarioLog = new FuncionarioLog(funcionarioBanco, TipoAcao.Atualizacao, funcionarioBanco.Departamento, Guid.NewGuid().ToString());
 
-        // // TODO: Chamar o método UpsertEntity para salvar no Azure Table
-        // tableClient.UpsertEntity(funcionarioLog);
+        // TODO: Chamar o método UpsertEntity para salvar no Azure Table
+        tableClient.UpsertEntity(funcionarioLog);
 
         return Ok();
     }
@@ -117,17 +117,17 @@ public class FuncionarioController : ControllerBase
 
         // Log Tabela Local
 
-        var funcionarioLog = new FuncionarioLogT(funcionarioBanco, TipoAcao.Remocao);
-        _context.FuncionarioLogsT.Add(funcionarioLog);
-        _context.SaveChanges();
+        // var funcionarioLog = new FuncionarioLogT(funcionarioBanco, TipoAcao.Remocao);
+        // _context.FuncionarioLogsT.Add(funcionarioLog);
+        // _context.SaveChanges();
 
         // Log Azure Table
 
-        // var tableClient = GetTableClient();
-        // var funcionarioLog = new FuncionarioLog(funcionarioBanco, TipoAcao.Remocao, funcionarioBanco.Departamento, Guid.NewGuid().ToString());
+        var tableClient = GetTableClient();
+        var funcionarioLog = new FuncionarioLog(funcionarioBanco, TipoAcao.Remocao, funcionarioBanco.Departamento, Guid.NewGuid().ToString());
 
-        // // TODO: Chamar o método UpsertEntity para salvar no Azure Table
-        // tableClient.UpsertEntity(funcionarioLog);
+        // TODO: Chamar o método UpsertEntity para salvar no Azure Table
+        tableClient.UpsertEntity(funcionarioLog);
 
         return NoContent();
     }
